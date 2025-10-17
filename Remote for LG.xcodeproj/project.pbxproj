@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5D83165D2E9ACDC9002C1DC3 /* WebOSClient in Frameworks */ = {isa = PBXBuildFile; productRef = 5D83165C2E9ACDC9002C1DC3 /* WebOSClient */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		5D3461FB2E97077500B51C41 /* Remote for LG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Remote for LG.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D83165D2E9ACDC9002C1DC3 /* WebOSClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = "Remote for LG";
 			packageProductDependencies = (
+				5D83165C2E9ACDC9002C1DC3 /* WebOSClient */,
 			);
 			productName = "Remote for LG";
 			productReference = 5D3461FB2E97077500B51C41 /* Remote for LG.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 5D3461F22E97077500B51C41;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5D83165B2E9ACDC9002C1DC3 /* XCRemoteSwiftPackageReference "WebOSClient" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5D3461FC2E97077500B51C41 /* Products */;
 			projectDirPath = "";
@@ -273,7 +282,7 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -305,7 +314,7 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -332,6 +341,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5D83165B2E9ACDC9002C1DC3 /* XCRemoteSwiftPackageReference "WebOSClient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jareksedy/WebOSClient";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5D83165C2E9ACDC9002C1DC3 /* WebOSClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D83165B2E9ACDC9002C1DC3 /* XCRemoteSwiftPackageReference "WebOSClient" */;
+			productName = WebOSClient;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5D3461F32E97077500B51C41 /* Project object */;
 }
