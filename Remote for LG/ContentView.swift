@@ -17,10 +17,12 @@ struct ContentView: View {
 
 #Preview("Light theme") {
     ContentView()
+        .environment(TVManager())
         .preferredColorScheme(.light)
 }
 
 #Preview("Dark theme") {
     ContentView()
+        .environment(TVManager())
         .preferredColorScheme(.dark)
 }
