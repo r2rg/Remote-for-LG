@@ -33,9 +33,11 @@ struct RemoteView: View {
                 RoundedRectangle(cornerRadius: 50)
                     .foregroundStyle(.buttonForeground)
                     .padding(25)
-                    .onTapGesture { location in
-                        print("\(location)")
-                    }
+                    .gesture(DragGesture()
+                        .onChanged({ value in
+                            let dragOffset = value.velocity
+                            service?.client?.sendKey(.move(dx: Int(dragOffset.width / 20), dy: Int(dragOffset.height / 20)))
+                        }))
                 
                 Spacer()
             }
