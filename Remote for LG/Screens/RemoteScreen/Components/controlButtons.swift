@@ -10,7 +10,7 @@ extension RemoteView {
                 
                 VStack {
                     Button {
-                        service.client?.sendKey(.up)
+                        service?.client?.sendKey(.up)
                     } label: {
                         Image(systemName: "arrowtriangle.up")
                             .remoteButtonStyle()
@@ -18,21 +18,21 @@ extension RemoteView {
                     
                     HStack {
                         Button {
-                            service.client?.sendKey(.left)
+                            service?.client?.sendKey(.left)
                         } label: {
                             Image(systemName: "arrowtriangle.backward")
                                 .remoteButtonStyle()
                         }
                         
                         Button {
-                            service.client?.sendKey(.click)
+                            service?.client?.sendKey(.click)
                         } label: {
                             Image(systemName: "circle")
                                 .remoteButtonStyle()
                         }
                         
                         Button {
-                            service.client?.sendKey(.right)
+                            service?.client?.sendKey(.right)
                         } label: {
                             Image(systemName: "arrowtriangle.forward")
                                 .remoteButtonStyle()
@@ -40,7 +40,7 @@ extension RemoteView {
                     }
                     
                     Button {
-                        service.client?.sendKey(.down)
+                        service?.client?.sendKey(.down)
                     } label: {
                         Image(systemName: "arrowtriangle.down")
                             .remoteButtonStyle()

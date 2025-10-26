@@ -3,11 +3,7 @@ import WebOSClient
 
 struct RemoteView: View {
     @Environment(TVManager.self) var tvManager
-    @State var service: ConnectionService
-
-    init() {
-        _service = State(initialValue: ConnectionService(tvManager: TVManager()))
-    }
+    @State var service: ConnectionService? = nil
 
     var body: some View {
         ZStack {
@@ -16,7 +12,7 @@ struct RemoteView: View {
             
             VStack {
                 Button {
-                    service.connect()
+                    service?.connect()
                 } label: {
                     Text("Connect")
                         .padding()
@@ -43,14 +39,19 @@ struct RemoteView: View {
                 
                 Spacer()
             }
-            .blur(radius: service.isPromptingForPin ? 5 : 0)
+            .blur(radius: service?.isPromptingForPin == true ? 5 : 0)
             
-            if service.isPromptingForPin {
+            if let service, service.isPromptingForPin {
                 PinEntryOverlay(service: service)
             }
         }
+        .onAppear {
+            if service == nil {
+                service = ConnectionService(tvManager: tvManager)
+            }
+        }
         .onChange(of: tvManager.selectedTV) { _, newTV in
-            service.tvManager.selectedTV = newTV
+            service?.tvManager.selectedTV = newTV
         }
     }
 }
