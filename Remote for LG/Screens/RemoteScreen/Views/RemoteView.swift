@@ -4,6 +4,7 @@ import WebOSClient
 struct RemoteView: View {
     @Environment(TVManager.self) var tvManager
     @State var service: ConnectionService? = nil
+    @State var dragOffset = CGSize.zero
 
     var body: some View {
         ZStack {
@@ -30,14 +31,25 @@ struct RemoteView: View {
                 .padding(.top)
                 .padding()
                 
-                RoundedRectangle(cornerRadius: 50)
-                    .foregroundStyle(.buttonForeground)
-                    .padding(25)
-                    .gesture(DragGesture()
-                        .onChanged({ value in
-                            let dragOffset = value.velocity
-                            service?.client?.sendKey(.move(dx: Int(dragOffset.width / 20), dy: Int(dragOffset.height / 20)))
-                        }))
+                TabView {
+                    RoundedRectangle(cornerRadius: 50)
+                        .foregroundStyle(.buttonForeground)
+                        .gesture(DragGesture()
+                            .onChanged({ value in
+                                dragOffset = value.velocity
+                                service?.client?.sendKey(.move(dx: Int(dragOffset.width / 20), dy: Int(dragOffset.height / 20)))
+                            }))
+                        .onTapGesture {
+                            service?.client?.sendKey(.click)
+                        }
+                        .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.3), trigger: dragOffset)
+                        .padding(25)
+                    
+                    numPad
+                }
+                .padding()
+                .tabViewStyle(.page)
+                .indexViewStyle(.page(backgroundDisplayMode: .always))
                 
                 Spacer()
             }
